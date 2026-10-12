@@ -1,0 +1,183 @@
+************************************************************************************
+               Cloud Computing and Distributed Systems (CLOUDS) Laboratory
+                  School of Computing and Information Systems
+                     The University of Melbourne, Australia
+                             http://www.unimelb.edu.au
+
+                        The CLOUDS Lab : http://www.cloudbus.org/
+-----------------------------------------------------------------------------------
+                      Call for Admission to Research Programs
+             (Scholarships Deadline: IPRS- August 31; others - Oct 31)
+
+
+Background:
+***********
+
+The Cloud Computing and Distributed Systems (CLOUDS) Laboratory is a software
+research and development group within the Dept. of Computer Science and Software
+Engineering at the University of Melbourne, Australia.  The University of Melbourne
+is Australia's leading research based university, with an international profile
+through its reputation for scholarship and teaching. The members of CLOUDS Lab are
+actively engaged in the design and development of next generation computing systems
+and applications. The lab is working towards realising this vision through its two
+flagship projects: Gridbus and Cloudbus.
+
+The Cloudbus project, an initiative that started in 2008 by the CLOUDS lab at the
+University of Melbourne, facilitates the realization of the above vision. The project
+developed innovative solutions for market-oriented Cloud computing. The current
+innovative developments include: (i) Aneka, a platform for developing and managing
+Cloud computing applications from market-oriented perspective; (ii) InterCloud, a
+framework for internetworking of Cloud service providers, dynamically creating
+federated computing environments, and scaling of distributed applications; (iii)
+CloudSim, a simulation framework that allows researchers to control every aspect of a
+Cloud environment: algorithms, platforms, and infrastructure; and (iv) Workflow
+Engine, a management platform that facilitates the creation, deployment and
+monitoring of complex applications modeled in a systematic and orderly manner in
+Cloud computing environments.
+
+The research, development, and innovation activities of CLOUDS lab are sponsored by
+Australian Research Council (ARC), Department of Innovation, Industry, Science and
+Research, Sun, IBM, CA, and Microsoft.
+
+The CLOUDS lab actively supports "self motivated, intelligent, and hard working"
+students interested in carrying out their research studies leading to PhD or Masters
+by Research degree. The University of Melbourne offers scholarships covering tution
+fee and living expenses for students with outstanding academic background and
+research skills.
+
+Please read Dr. Commer's notes "on the PhD degree and do you have what it takes?" at
+http://www.cs.purdue.edu/homes/dec/essay.phd.html before applying for PhD admission
+in CLOUDS Lab!
+
+Higher Degree Research Admissions: Call for Applications
+********************************************************
+
+We invite applications for admission to PhD or Masters by Research program in topics
+related to Parallel and Distributed Computing (PDC). We are interested in research
+issues related to Architectures, Systems, Resource management, Scheduling, Tools,
+Programming Environments that enable:
+
+- Cloud Computing
+- Edge Computing
+- Fog Computing
+- Internet-of-Things
+- Internet Computing 
+- Utility Computing
+- Market-Oriented Computing
+- High Performance Distributed Computing 
+- Quantum Computing 
+- Web computing 
+- Distributed Storage
+- Data Intensive Science 
+- Peer-to-Peer Computing 
+- Service-Oriented Computing
+- Innovative eScience and eBusiness Applications
+
+and scale from a single system to the Internet, which is driven by the requirements
+of merging eScience and eBusiness applications. In all our efforts, we place great
+emphasis on both inventions (theory) and innovations (practice).
+
+Some Pointers to Postgraduate Admission Information:
+****************************************************
+
+1. For Masters/PhD admission Info:
+--Melbourne School of Engineering Guidelines:
+https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-engineering-and-it/entry-requirements/
+
+Application Form:
+http://futurestudents.unimelb.edu.au/admissions/applications/research
+https://study.unimelb.edu.au/how-to-apply/graduate-research/international-applications/applications
+
+[Please fill application and submit all documemts]
+
+Make a request for admission to:
+  * PhD Degree if you already hold a Master degree in Computer Science and Engineering or BSc honours 
+  * Masters by Research if you already hold a 4-year degree in Computer Science and Engineering.
+
+2. Scholarships: 
+
+International Students: 
+https://study.unimelb.edu.au/find/courses/graduate/doctor-of-philosophy-engineering-and-it/fees/#nav
+
+There is NO separate application form for applying to scholarships - all those apply for 
+admission are automatically considered for the follwing tax-free scholarships (subjected to 
+funding co-contribution from supervisor):
+
+* International Postgraduate Research Scholarships (IPRS)
+  - covers fee and medical expenses
+* Melbourne International Research Scholarship (MIRS)
+ - covers living expenses
+* Melbourne International Fee Remission Scholarship (MIFRS)
+ - those who are unable to get IPRS are considered for MIFRS. 
+
+Note that the University of Melbourne offers scholarships to students on competitive
+basis, purely based on their academic merit. Currently, students who scored over 80%
+of marks or equivalent GPA in in the final two years of their higher education are
+considered for scholarship award. In reality, students (especially international
+ones) need to have much better academic record (say over 88%) to win scholarship.
+Therefore, the CLOUDS Lab encourages students with outstanding academic record to
+apply for admission to research studies.
+
+If you fully depend on University of Melbourne Scholarship to support your studies
+(both tuition and living expenses), it will be good idea to mention that explicitly
+in the application.
+
+Other Scholarships Australian Govt.:
+
+
+* Australian Development Scholarships (ADS)
+   http://dfat.gov.au/aid/
+
+
+3. Postgraduate English language requirements:
+
+All applicants must meet the English language requirements of the University to be
+eligible to be offered a place. You are expected to take either TOEFL or IELTS exams
+to demonstrate this although there are other ways of demonstrating your English
+language skills.
+
+
+
+4. Your Application Package:
+
+Please enclose/submit the following documents with your application:
+-----
+1. Certified copies of all your marks cards
+2. Recommendation letter from your dept head or professors
+3. Enclosed copies of all your research papers
+4. A detailed Resume: make sure to include brief information about software projects
+you have carried out and papers you have published in conferences/journals.
+5. Tentative research proposal (not exceeding 4 pages) on a topic of your interest.
+ [A sample proposal format can be found at: http://www.buyya.com/ecogrid/PhDRP-97.txt]
+
+   This helps in identifying and evaluating candidate's research potential.
+   The proposal is initial idea, but it can be changed later.
+   You are encouraged discuss your research proposal in advance with potential 
+   supervisors in the group whose research interest matches with yours.
+
+Please discuss your proposal with your prospective supervisor before your submit your
+application. If you like to do PhD/MPhil, please contact the Director of CLOUDS Lab.
+
+If you need any specific clarification, please contact
+The CLOUDS Lab Director: Rajkumar Buyya, Email: rbuyya@unimelb.edu.au
+
+**************************************************************************************
+About the University:
+
+The University of Melbourne is an international research and teaching university.  
+We employ people of outstanding calibre and offer a unique environment where staff
+are valued and rewarded.
+
+Founded in 1853, the University commenced teaching its first students in 1855.  The
+University has over 50,000 students in a broad range of professional disciplines.  
+Over 8000 students are higher degree students.  The University has over 6000 staff
+members.
+
+The University is one of Australia's leading research based universities, with an
+international profile through its reputation for scholarship and teaching. It is a
+founding member of Universitas 21, an international federation of universities.
+
+The University is committed to equal opportunity in education, employment and welfare
+for staff and students.  Students are selected on merit and staff are selected and
+promoted on merit.  
+**************************************************************************************

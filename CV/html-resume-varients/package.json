@@ -1,0 +1,10 @@
+{
+  "name": "minn-bo-bo-phd-cv-variants",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "export": "node scripts/export.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

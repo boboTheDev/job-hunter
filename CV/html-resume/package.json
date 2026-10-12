@@ -1,0 +1,14 @@
+{
+  "name": "minn-bo-bo-html-resume",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "export": "node scripts/export.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^5.4.149"
+  }
+}
+

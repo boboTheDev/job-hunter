@@ -1,0 +1,25 @@
+{
+  "slug": "scg-devops-engineer-data-analytics-ai",
+  "date": "August 11, 2026",
+  "applicant": {
+    "name": "Minn Bo Bo",
+    "headline": "Software Engineer | Full-Stack, Cloud & DevOps",
+    "location": "Bangkok, Thailand",
+    "phone": "+66 803791601",
+    "email": "minnbobo.official@gmail.com",
+    "linkedin": "linkedin.com/in/minn-bo-bo-6b30b0187",
+    "github": "github.com/boboTheDev"
+  },
+  "role": "DevOps Engineer (Data Analytics & AI Engineering Team)",
+  "company": "The Siam Cement Public Company Limited (SCG)",
+  "recipient": "Hiring Team",
+  "source": "Jobsdb",
+  "companyNotes": "SCG is a leading Thai conglomerate with a strong focus on innovation, sustainability, agile work, and building technology across its core businesses, including Cement-Building Materials.",
+  "jobDescription": "DevOps Engineer role for the Data Analytics and AI Engineering Team in SCG Cement Business. Responsibilities include designing, implementing, and maintaining CI/CD pipelines for AI/ML models and applications; monitoring and managing infrastructure for AI workloads; supporting reliability and scalability; automating model training, versioning, and deployment; improving testing and deployment practices; collaborating with IT teams; cloud infrastructure; container technologies; infrastructure-as-code; monitoring; system reliability, availability, and security; onsite work at SCG Bang Sue Head Office.",
+  "letter": [
+    "I am interested in the DevOps Engineer role with SCG's Data Analytics and AI Engineering Team because it connects closely with the work I want to keep developing: reliable software delivery, cloud infrastructure, and practical AI systems that can be used in real business environments. SCG's focus on innovation, sustainability, and adapting technology across its businesses is meaningful to me because it shows how engineering can support both operational improvement and long-term impact.",
+    "In my current work as a Software Engineer, I work across backend development, cloud deployment, and DevOps support. I build and maintain services, support production releases, improve delivery workflows, and work with AWS, Docker, Linux, GitHub Actions, and CI/CD practices. I also use testing as part of my normal development process, which has helped me understand how to make releases more stable and easier to maintain.",
+    "This role is especially attractive to me because it brings DevOps work closer to AI and data systems. I have hands-on experience building AI-related utilities and document workflows, and I am interested in helping AI applications move from experiments into reliable systems that teams can operate and improve. I would enjoy contributing to pipeline automation, infrastructure monitoring, deployment processes, and collaboration with IT teams to make AI workloads more dependable, scalable, and secure.",
+    "I would welcome the opportunity to contribute to SCG's Data Analytics and AI Engineering Team at Bang Sue and continue growing in an environment that values both innovation and strong engineering practice. Thank you for considering my application. I would be glad to discuss how my software engineering, cloud, DevOps, and AI-related background can contribute to this role."
+  ]
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="One-page cover letter generator for Minn Bo Bo."
+    />
+    <title>Cover Letter Generator | Minn Bo Bo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-label="Cover letter generator">
+      <section class="workspace" aria-labelledby="generator-title">
+        <form class="panel controls" id="letter-form">
+          <header class="app-header">
+            <div>
+              <p class="eyebrow">Core Generator</p>
+              <h1 id="generator-title">Cover Letter Generator</h1>
+            </div>
+            <button class="icon-button" type="button" id="reset-button" title="Reset form">
+              <span aria-hidden="true">R</span>
+              <span class="sr-only">Reset form</span>
+            </button>
+          </header>
+
+          <div class="form-grid">
+            <label>
+              Role
+              <input id="role" name="role" placeholder="Software Engineer" />
+            </label>
+            <label>
+              Company
+              <input id="company" name="company" placeholder="Company name" />
+            </label>
+            <label>
+              Hiring Manager
+              <input id="manager" name="manager" placeholder="Hiring team" />
+            </label>
+            <label>
+              Location / Work Mode
+              <input id="location" name="location" placeholder="Bangkok / Remote" />
+            </label>
+          </div>
+
+          <label>
+            Company Notes
+            <textarea
+              id="company-notes"
+              name="company-notes"
+              rows="4"
+              placeholder="Product, industry, mission, engineering culture, or why this company matters."
+            ></textarea>
+          </label>
+
+          <label>
+            Job Description
+            <textarea
+              id="job-description"
+              name="job-description"
+              rows="11"
+              placeholder="Paste the job description here, or import a .txt/.md file."
+            ></textarea>
+          </label>
+
+          <div class="toolbar" aria-label="Generator actions">
+            <label class="file-button">
+              <input id="file-input" type="file" accept=".txt,.md,text/plain,text/markdown" />
+              Import JD
+            </label>
+            <button type="submit">Generate</button>
+            <button type="button" id="copy-button">Copy</button>
+            <button type="button" id="download-button">Download</button>
+            <button type="button" id="print-button">Print</button>
+          </div>
+
+          <aside class="signal-box" aria-label="Detected job signals">
+            <h2>Detected Signals</h2>
+            <div id="signals" class="signals">
+              <span>Paste a job description to detect matching keywords.</span>
+            </div>
+          </aside>
+        </form>
+
+        <section class="preview-wrap" aria-labelledby="preview-title">
+          <div class="preview-actions">
+            <h2 id="preview-title">One-Page Letter</h2>
+            <p id="word-count">0 words</p>
+          </div>
+          <article
+            class="letter-page"
+            id="letter-output"
+            contenteditable="true"
+            aria-label="Generated cover letter"
+          ></article>
+        </section>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

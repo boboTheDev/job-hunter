@@ -1,0 +1,25 @@
+{
+  "slug": "bangkok-bank-platform-engineer",
+  "date": "August 11, 2026",
+  "applicant": {
+    "name": "Minn Bo Bo",
+    "headline": "Software Engineer | Full-Stack, Cloud & DevOps",
+    "location": "Bangkok, Thailand",
+    "phone": "+66 803791601",
+    "email": "minnbobo.official@gmail.com",
+    "linkedin": "linkedin.com/in/minn-bo-bo-6b30b0187",
+    "github": "github.com/boboTheDev"
+  },
+  "role": "Platform Engineer",
+  "company": "Bangkok Bank Public Company Limited",
+  "recipient": "K. Pongpon Suksai and Hiring Team",
+  "source": "Jobsdb",
+  "companyNotes": "Bangkok Bank is a leading regional bank focused on quality financial services, modern technology, reliable systems, and serving customers at scale.",
+  "jobDescription": "Platform Engineer role in Bang Rak, Bangkok. Responsibilities include infrastructure automation with Terraform, Kubernetes cluster management, Kubernetes configuration and security, logging, monitoring, network policy, security policy, Istio ingress, MTLS, troubleshooting Kubernetes-related errors, supporting development teams, process optimization, Agile participation, scripting, Git, cloud platforms such as AWS, Azure, or Google Cloud, and application and cloud security scanning tools.",
+  "letter": [
+    "I am interested in the Platform Engineer role at Bangkok Bank Public Company Limited because it matches the kind of engineering work I want to keep growing in: building reliable systems, improving delivery processes, and supporting applications that people and businesses depend on every day. Bangkok Bank's focus on quality financial services and modern technology is meaningful to me because banking systems need careful engineering, stable operations, and a strong sense of responsibility.",
+    "In my current work as a Software Engineer, I work across backend development, cloud deployment, and DevOps support. I build and maintain services, support production releases, improve delivery workflows, and work with tools such as AWS, Docker, Linux, and GitHub Actions. This has helped me understand not only how to write application code, but also how systems are deployed, monitored, maintained, and improved after release.",
+    "What attracts me most to this role is the chance to work closer to platform infrastructure and support development teams in building more stable and efficient systems. I have not treated platform engineering as only a list of tools; I see it as the work that helps engineers deliver safely and users receive reliable service. I am especially motivated to deepen my experience with infrastructure automation, Kubernetes, security practices, and troubleshooting in a production environment. My academic background in Electrical and Electronic Engineering, together with my master's study in telecommunication and networking systems, also gives me a strong foundation for understanding networks, infrastructure, and system reliability.",
+    "I would welcome the opportunity to contribute to Bangkok Bank's platform engineering team and continue developing as an engineer in a high-standard environment. Thank you for considering my application. I would be glad to discuss how my software engineering, cloud, DevOps, and networking background can contribute to this role."
+  ]
+}

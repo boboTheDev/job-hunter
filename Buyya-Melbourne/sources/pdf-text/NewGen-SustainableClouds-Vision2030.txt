@@ -1,0 +1,630 @@
+Received: 14 March 2023 Revised: 8 June 2023 Accepted: 13 July 2023
+DOI:10.1002/spe.3248
+RESEARCH ARTICLE
+Energy-efficiencyandsustainabilityinnewgeneration
+cloudcomputing:Avisionanddirectionsforintegrated
+managementofdatacentreresourcesandworkloads
+RajkumarBuyya1 ShashikantIlager1 PatriciaArroba1,2
+1CloudComputingandDistributed
+Systems(CLOUDS)Lab,Schoolof
+ComputingandInformationSystems,The
+UniversityofMelbourne,Australia
+2ETSITelecomunicación,CCS–Centerfor
+ComputationalSimulation,Universidad
+PolitécnicadeMadrid,Madrid,Spain
+Correspondence
+RajkumarBuyya,CloudComputingand
+DistributedSystems(CLOUDS)Lab,
+SchoolofComputingandInformation
+Systems,TheUniversityofMelbourne,
+Madrid,Australia.
+Email:rbuyya@unimelb.edu.au
+Fundinginformation
+HiPEACNetwork;Universityof
+Melbourne;HiPEAC6Network;European
+Union’sHorizon2020researchand
+innovationprogramme
+Abstract
+Cloud computing has become a critical infrastructure for modern society, like
+electricpowergridsandroads.Asthebackboneofthemoderneconomy,itoffers
+subscription-basedcomputingservicesanytime,anywhere,onapay-as-you-go
+basis.Itsuseisgrowingexponentiallywiththecontinueddevelopmentofnew
+classesofapplicationsdrivenbyahugenumberofemergingnetworkeddevices.
+However,thesuccessofCloudcomputinghascreatedanewglobalenergychal-
+lenge,asitcomesatthecostofvastenergyusage.Currently,datacentreshosting
+Cloud services world-wide consume more energy than most countries. Glob-
+ally, by 2025, they are projected to consume 20% of global electricity and emit
+upto5.5%oftheworld’scarbonemissions.Inaddition,asignificantpartofthe
+energyconsumedistransformedintoheatwhichleadstooperationalproblems,
+including a reduction in system reliability and the life expectancy of devices,
+andescalationincoolingrequirements.Therefore,forthefuturegenerationsof
+Cloud computingto address the environmental and operational consequences
+of such significant energy usage, they must become energy-efficient and envi-
+ronmentally sustainable while continuing to deliver high-quality services. In
+thisarticle,weproposeavisionforlearning-centricapproachfortheintegrated
+managementofnewgenerationCloudcomputingenvironmentstoreducetheir
+energyconsumptionandcarbonfootprintwhiledeliveringservicequalityguar-
+antees. In this article, we identify the dimensions and key issues of integrated
+resource management and our envisioned approaches to address them. We
+present a conceptual architecture for energy-efficient new generation Clouds
+andearlyresultsontheintegratedmanagementofresourcesandworkloadsthat
+evidenceitspotentialbenefitstowardsenergyefficiencyandsustainability.
+KEYWORDS
+Cloudcomputing,coolingsystems,energyefficiency,integratedresourcemanagement,
+learning-centricmanagement,thermalawareness
+Thisisanopenaccessarticleunderthetermsofthe CreativeCommonsAttribution License,whichpermitsuse,distributionandreproductioninanymedium,providedthe
+originalworkisproperlycited.
+©2023TheAuthors. Software:PracticeandExperience publishedbyJohnWiley&SonsLtd.
+24 wileyonlinelibrary.com/journal/spe Softw:PractExper .2024;54:24–38.
+
+
+BUYYAetal. 25
+1 INTRODUCTION
+Cloudcomputingispervasiveinoureconomyandsocietyasithostsawidevarietyofapplicationsincludingenterprise,
+banking,transportandhealthcare,anddeliverstheirservicestoconsumers.ApplicationsintheCloudperformaresig-
+nificantlyfasterforusersastheytapintotheon-demandprocessingpowerofmultipleserversonthebackend.Further,
+tosupportemergingapplicationsdrivenbyIoT, 1 BigData,andartificialintelligence(AI),majorCloudserviceproviders
+suchasAmazonandMicrosoftaredeployingdatacentres(DCs)worldwide.
+However,Cloudcomputingiscausinganenormousescalationofenergyusage,withincreasinglypervasivefront-end
+clientdevices,suchassmartphones,interactingwithDCs’back-end.AtypicalDCconsumesasmuchenergyas25,000
+households.2 AccordingtotheGreenpeace,DCsworld-wideconsumemoreenergythanmostcountriesandonlythefour
+largest economies (USA, China, Russia, Japan) surpass them in their annual electricity usage. Furthermore, there are
+over8millionactiveDCsworld-wide 3 andtheyareprojectedtogrowover12%peryear.Astheirnumbersandsizegrow,
+theywillbeconsuminganincreasingamountofenergy.
+Due to excessive reliance on brown energy (fossil fuel-based), DCs significantly contribute to the greenhouse gas
+emissions resulting in high carbon footprints (43 million tons of CO2/year growing at an annual rate of 11%), and
+they are projected to contribute up to 5.5% of the world’s carbon emissions by 2025,4 and by 2030, they would con-
+sumeabout8000TWh(seeFigure 1).5 Thus,itisimperativetohavestrategiesforDCstoreducetheircarbonfootprints
+in our carbon-constrained future. Although harnessing renewable energy addresses this issue, its availability can be
+intermittent, and energy efficiency within DCs also continues to remain a significant problem to be solved. Moreover,
+93% of the energy used in DCs support ICT equipment operation and cooling6 (see Table1). Therefore, we envi-
+sion the reduction of the energy needs and carbon footprint substantially through the integrated management of all
+resources.
+Through this research, with focus on integrated energy efficient management of DC resources, we aim to bring
+down the energy consumption of DCs world-wide up to 80%, from 8000 TWh (worst case) in 2030 to about 1200TWh
+(see Figure1).5 Therefore, there is a need for a new approach for the management of DCs, where every component is
+instrumentedanddealtinanintegratedmannertoensuretheenergy-efficientexecutionofapplications. 7
+FIGURE 1 ElectricityusebyDCsworldwide.
+TABLE 1 Datacentreenergyusagebyitsdifferentcomponents.
+DCComponents %Use
+Servers 50
+Coolingsystems 35
+Networks 8
+Others(UPS,PDU,etc.) 7
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+26 BUYYAetal.
+FIGURE 2 AdistributedenvironmentforenterpriseandSmart*ApplicationswithedgeandcloudDCs.
+With the emergence of pervasive IoT-based applications, demand for low-latency (i.e. near real-time) services has
+increasedtremendously8 andiscreatingahighlydistributedenvironment(seeFigure 2).Applicationssuchassmartcars,
+smart cities, and smart healthcare require edge-affinity to the DC services to meet their low latency quality of service
+(QoS)requirements.SuchdevelopmentswillleadtothedeploymentofmanyDCsattheedgeandacrossmanyregions
+withdifferentcapabilitiesandenergysources.Monitoringagents(MA)monitorsstateofthedatacentreresourcesand
+applications and continuously provides live data to and help to take the informed decisions for optimising data cen-
+tre resources. Brokering agents (BAs) as part of a DC resource management seamlessly offload tasks to other DCs. By
+dynamicallyoffloadingrequests,theyfacilitateharnessinggreenenergy,edgeaffinity,andexploitingtheavailabilityofa
+smartgrid’senergyatalowprice.Thus,theproposedresearchapproachenablestheoptimaluseofresources,network
+traffic reduction, service cost reduction, and increased operational efficiency, along with the reduction in DCs’ energy
+consumptionandcarbonfootprint,whiledeliveringCloudservicesthatmeettheQoSrequirementsofendusers.
+Inthisdirection,thisarticleintroducesourvisiontowardsenergyefficiencyandsustainabilityinthenewgeneration
+ofDCs,including:(i)minimiseenergyconsumptionthroughsustainableuseofresourceswhilemaintainingQoSdemand
+ofusers,(ii)investigateenergyefficiencyacrossalltypesofDCresources,applicationmodelsandCloudservicesand(iii)
+achieveaparadigmshiftinmanagementsystemsfromcontrol-centrictodynamiclearning-centricalgorithms.
+The rest of the article is organised as follows. Section2 introduces the significance and innovations of our
+energy-centric proposal. The dimensions of integrated management as well as the research questions that arise from
+them are discussed in Section3. In Section4, we present our conceptual architecture for energy-efficient new genera-
+tionCloudcomputing.Section 5identifiesthekeyissuesofintegratedresourcemanagementsystemsandourenvisioned
+approachestoaddressthem.Acasestudyforcritical-businessapplicationsispresentedinSection 6todemonstratethe
+potentialimpactoftheintegratedresourcemanagementonenergyefficiency.InSection 7,conclusionsandguidelines
+forfutureresearcharedrawn.
+2 SIGNIFICANCEANDINNOVATIONOFTHEPROPOSEDVISION
+Inthestate-of-the-art,systematicalignmentforenergyefficiencyacrossallDCresourcesandservicemodelswithinte-
+gratedmanagementhasnotbeenprioritisedtodate.Existingapproachesareconfinedtoenergyefficiencyata‘single’
+leveloftheCloudcomputingstack, 9 thatis,eitherattheinfrastructureorplatformlevel.Inaddition,theyprimarilyfocus
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+BUYYAetal. 27
+ona‘single’typeofresource(e.g.serveronly)independently,withoutexplicitlyconsideringothertypes(e.g.coolingsys-
+tems)10 and can achieve only up to 25% reduction in energy use.11 The same approach is followed while dealing with
+usersandtheirapplicationworkloads.Suchapproachesarelimitedintheireffectivenessbecauseofthecomplexityand
+interrelationshipbetweendifferentelementsoftheCloudcomputingstackandresources.Theyalsoleadtounintended
+consequences such as the creation of hot spots, which can cause system failures and escalate cooling energy require-
+ments.Therefore,toachievesignificantreductionsinenergyconsumption,intherangeof50%–80%,aquantumleapin
+researchisrequired.Weproposetogobeyondthecurrentresearchboundariestoenableintegratedmanagementofmajor
+powerconsumingelementsofDCs–servers,coolingsystemsandnetworks–toenhanceenergyefficiency,resilienceand
+sustainability.
+Theinnovationspresentedinthisarticlewillfundamentallychangethewayenergyefficiencyandsustainabilityare
+aligned,engineeredandrealisedinnewgenerationClouds.Throughclosesynthesisoftheoryandpractice,itwilldeliver
+timelyinnovationsforsignificantscientific,economic,environmentalandsocietalimpacts.
+2.1 Deliveringservicequalityguarantees
+Clouds hosting time-critical and always-on applications need QoS guarantees such as availability, response time, cost,
+throughput,etc.,alongwithtoleratingfaults.Weproposeapproachesthataddressservicequalityguaranteesthroughthe
+developmentofQoS-drivenprovisioningandschedulingofresourcesalongwithenergy-efficienttechniquesforexecu-
+tionofapplications.WeenvisionfutureDCsthatareenergy-efficient,resilient,available24/7,andthathaveaminimal
+impact on the environment at a time when the huge growth in Cloud computing is at odds with the world’s need for
+asmallercarbonfootprint.Achievinganefficienttrade-offbetweentheconflictingobjectivesofoptimisingenergyeffi-
+ciencyandminimisingexecutiontime/costischallengingduetotheinherentdiversityassociatedwithCloudworkloads,
+and heterogeneity of underlying infrastructures. By harnessing geographically distributed DCs, we can route requests
+with edge affinity and deliver time-critical and reliable services to users in a cost-efficient manner. Thus, the result-
+ing scientific innovations are both timely and extremely important to provide a fault-tolerant scenario for new Cloud
+infrastructures.
+2.2 Integratedresourcemanagementforenergyefficiency
+One of the main sources of energy inefficiencies in DCs is that its servers are often underutilised, only using about
+10%–50% of their capacity.12 This problem is amplified by the fact that their energy consumption is not in proportion
+totheirload(idleserversoftenconsumeupto30%ofenergyequivalenttotheirfullloadinvirtualisedCloudenviron-
+ments13).Consolidationofvirtualmachines(VMs)isusedtoreducethenumberofactiveserversandincreaseresource
+utilisation to minimise server energy usage. However, this approach typically ignores other core components of high
+energyuse,suchasnetworksandcoolingsystems.ItalsopotentiallyincreasesthenumberofhotspotsinDCs,increas-
+ingthelikelihoodofserverfailurebesidesincreasingcoolingrequirements.Ontheotherhand,hotspotmitigationcan
+beperformedbyspreadingloadacrossserversandracks,butitwillplacecommunicatingVMsfarapart,whichincreases
+networklatencyanddeterioratesservicequality.Inthiscontext,wewouldrequirenovelintegratedresourcemanagement
+algorithmsthatconsidersalltheseelementsandmanagestrade-offs.ThroughtheinterplaybetweenuserQoSrequire-
+ments,workloads,energysources,andIoT-enabledcoolingsystems,wecandynamicallymanageresourcesintimeand
+spacedimensions.
+2.3 Newlearning-basedalgorithmsforCloudresourcemanagementsystems(RMS)
+Data centres are enormously complex, and it is hard to manually fine-tune their parameters for energy efficiency and
+performance.Thisisduetothelargenumberofheterogeneousservershostingawidevarietyofapplicationsandcom-
+plexinteractionsbetweenservers,networks,andcoolingsystems.Forexample,just10piecesofequipment,eachwith
+10 settings, would have 1010 possible configurations, a set of possibilities impossible to manually fine-tune. Current
+heuristics/rule-based solutions are unable to provide high efficiency as they are static, manually fine-tuned and can-
+notadjusttothecomplexdynamiccontexts.Weproposemachinelearning(ML)andreinforcementlearning(RL)-based
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+28 BUYYAetal.
+methods to employ proactive measures and adapt to the complex dynamicity to deliver energy efficiency across all
+resources and the whole system. These algorithms will be most efficient as they dynamically learn the complexity of
+Cloudenvironmentsbyincorporatingtheexperience,thecurrentstatusandtheworkloadcharacteristics.
+These innovations embody a set of highly novel theories, principles and techniques that together will produce
+new learning-centric algorithms and systems for the integrated management of new generation Cloud computing
+environmentstoreducetheirenergyconsumptionandcarbonfootprint.
+3 DIMENSIONSANDRESEARCHCHALLENGES
+Achieving sustainable and energy-efficient new generation Clouds is a complex challenge as it impacts from many
+dimensions. Computing and cooling resources, application models, nature of workloads, deployment models, energy
+sources,monitoringsystemsanduserQoSdemandaredimensionsofintegratedmanagementidentifiedinourresearch
+asshowninFigure 3.Integratedmanagementinvolvesconsideringeveryaspectofalltheelementsandtheireffecton
+otherdomains,makinglearning-centricapproachesaninterestingoptiontoexplore.Thiscomplexandchallengingcloud
+computingenvironmentraisesthefollowingkeyresearchquestions:
+1. Howtotrade-offQoSrequirementsofdifferentusers?
+2. Whichisthemostoptimalphysicalmachine(PM)forhostingaVMforaspecificapplicationandnetworkmodel?
+3. Whentoprovisionorde-provisionresourcesforagivenworkload?
+4. Howtoconsolidatevirtualresources(which,whenandwhere)toreduceenergyconsumptionwithoutcompromising
+QoS?
+5. WhatisthebestoperatingfrequencyofcomputingresourcestominimiseenergyandmeetQoS?
+6. Howtomanage/scheduleworkloadswithoutcreatinghotspotswhilemeetingtheQoSoftheapplications?
+7. Howtoaccuratelypredict/estimatethethermalstatusoftheClouddatacentreandthetemperatureofitsresources?
+8. Whatisthebesttemperature-awareapproachfortheplacementofworkloadstoavoidfailures/outagesandminimise
+coolingenergy(reducingpeaktemperature).
+9. Howtoharnesstemperaturesensorsdatatoreducecoolingsystems’energyconsumptionbyvaryingthesupplyair
+temperature?
+10. How to organise workloads and harness diverse variable renewable energy sources (wind and solar power among
+others)tominimisecarbonfootprint?
+11. Howtobalancetheloadacrossgeo-distributedDCstoensuresustainability?
+FIGURE 3 Dimensionsofintegratedmanagement.
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+BUYYAetal. 29
+4 ARCHITECTURALFRAMEWORK
+TheaimofourvisionistoconsiderallaspectsofenergyefficiencyandsustainabilityinnewgenerationCloudcomput-
+ingacrossarchitectures,algorithms,softwaresystems,andapplications,dealingwithdeviceandsystem-wideresilience,
+energyandthermalissues.Tothisend,ourapproachisdrivenbyasetofkeyrequirements:(1)energyefficiencyacrossall
+typesofDCresources,Cloudservicesandapplicationmodels,(2)shiftfromcontrol-centrictodynamiclearningcentric
+algorithmsinsystemmanagementand(3)sustainableuseofresourcesofDCstominimiseenergyconsumptionandcar-
+bonfootprintandmeetQoSdemandsofusers.Theycanbemetthroughintegratedmanagementofresources,interplay
+betweendifferentservicelayers,anduseofmachine-learningbasedmethodsforproactivemanagementofresources.
+Figure4illustratesthehigh-levelarchitecturalframeworkguidingourapproachandthemainelementsofthe new
+energy-efficient,integratedresourcemanagementsystem .Fromthetop,serviceconsumersdefinetheirQoSrequirements
+andaccessCloudservices,submittingtheirrequestsfromanywhereintheworld.OurproposedRMSisresponsiblefor
+energy-efficient management of user requests, applications, and all resources of DCs, which can be edge data centres
+(EDCs)orremoteClouddatacentres(CDCs)todeliverqualityservices.TheRMScanonlyachieveitsgoalsifalgorithms
+and techniques for energy-efficient Cloud computing are integrated at all levels of the Cloud stack, from the physical
+layer(comprisingDC’scomputing,networking,andcoolingresources)totheapplicationlayer.Tothisend,theDCmust
+containheatsensorsthatmonitorthetemperatureatdifferentplaces,powersensorsthatmonitorenergyconsumption
+ofserversandnetworkingequipment,andprogrammablecoolingsystems.
+FIGURE 4 Adatacentreresourcemanagementsystem.
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+30 BUYYAetal.
+OurRMSimplementsthelogicenablingfinegrainedcontrolofcoolingsystemsandloaddistributionacrossservers
+toavoidhotspots.ToensuretheQoSofacceptedrequests,theentrypointoftheRMSwillbeanadmissioncontrolmod-
+ule that filters out requests that cannot be served within the desired QoS. RMS takes care of provisioning of resources
+andschedulingapplicationtaskstosuitableresources.Asregularmonitoringiscriticalindecision-making,RMSclosely
+monitorsandmanagesthehealthandloadoftheserversandthestatusofthecoolingsystemtoproactivelybalancethe
+overallsystemforenergyefficiency.Agreenresourcebrokeragenthandlesthedistributionofrequestsacrossmultiple
+DCstoreducetheircarbonfootprintandmeetuserQoSrequirements.
+5 RESEARCHISSUESANDENVISIONEDAPPROACHESASFUTURE
+DIRECTIONS
+Asweaimtowardsthedevelopmentofournewintegratedresourcemanagementsystem,weidentifiedsomeissuesin
+essentialareasrelatedtoenergyefficiencythatneedtobeaddressed.Inthissection,wepresentthekeyissuesandthe
+approachesweenvisiontosolvethem.
+5.1 Workloadandpower-awaredynamicresourceprovisioningandplacement
+Cloudsallocateresourcestoapplicationsdynamicallybasedontheusers’requirements.Theseresourcesareofferedas
+VMsorcontainerswithvariousconfigurationsreadytobeleasedandusedaslongastheyareneeded.Thismodelcallsfor
+aresourceprovisioningstrategythatworkstogetherwiththeschedulingalgorithmdrivenbyQoSrequirements.Provi-
+sioningofvirtualresourcesforuserrequestsincludesestimatingthenumberofrequiredresourcesandprovidingsuitable
+resourcesaccordingly.AbroadrangeofapplicationsexecutedinCloudsdifferfromeachotherintermsofduration(rang-
+ing from web transactions running for a fraction of a secondto streaming applications that run continuously), the use
+ofresources(e.g.CPUorI/O-intensive),degreeofparallelismanddependenciesbetweentasks(whichdictatethemax-
+imumnumberoftasksthatcanbeexecutedconcurrently).Thehugevariationinapplicationcharacteristicsmeansthat
+nosingleprovisioningsolutioncanoptimiseandsupportallofthem.Whenthesameprovisioningapproachisutilised
+fordifferentapplications,theyexhibitahugedifferenceinperformance. 14
+Tocounterthislimitationof‘onesizefitsall’provisioning,weaimtodevelopprovisioningalgorithmsthatareapplica-
+tionstructure-awareandbalancebothQoSandenergyutilisation.Provisioningofvirtualmachinesandcontainersraises
+anotherinfrastructureissue,namelythe placementofVMs .Thisproblemincludestheselectionofthebest-suitedPM,that
+is,server,foreachVM,takingintoconsiderationrequirementsoftheVM,currentusageandenergyutilisationlevelsof
+availableserversintheDC,andthestructureofapplicationstomaintaintheVMs-affinityfortheirinterrelatedcommu-
+nicatingtasks.Weaimtoaddressthisthroughplacementpoliciestomaintainmeta-dataofVMscontaininginformation
+aboutapplicationtopologies.
+5.2 QoS-drivenenergy-efficientschedulingofapplications
+Increatingelastic/scalableapplicationsforexecutiononClouds,avarietyofapplicationprogrammingmodels,suchas
+taskfarming,workflowandstream-orientedmodelsareused.Eachofthesemodelsneedsitsownschedulingalgorithm.
+Most of the prior works15,16 have focused on the general problem of energy-efficient scheduling without focusing on
+fine tuning the scheduling mechanisms to suit workload characteristics and all types of resources. To illustrate our
+learning-basedschedulingapproach,letusconsideraschedulingmodelforworkflow-orientedapplications,whichare
+common in scientific and business domains. In workflow applications, precedence constraints among tasks and cor-
+responding inter-task communications are amongst the unique characteristics that need to be exploited to optimise
+the utilisation of resources. Each workflow task can be either batch or stream-based, and their performance can vary
+dependingonthetypeofresourcesonwhichthetasksarescheduled.
+AsshowninFigure 5,ourproposeddeepreinforcementlearning(DRL)-basedRMSinteractswiththeDCenviron-
+ment to learn intelligent scheduling policies. Its key components are (1)scheduling agent, which observes the current
+state of the system, takes an action (scheduling decision) and sends it to the application execution manager, and
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+BUYYAetal. 31
+FIGURE 5 DRL-basedenergy-efficientschedulingsystem.
+fetchesarewardfromtherewardgeneratorforthecurrentaction;(2) applicationexecutionmanager ,whichtakescare
+of submission of tasks to the DC VMs and monitoring resource usage, resource availability and system health; and
+(3) reward generator, which uses the monitoring system to generate RL reward that can be used to train RL-based
+schedulingagents.
+AcommonweaknessoftheexistingDRL-basedtechniques 17 isthattheiragentsareprovidedwithalimitedrepre-
+sentation of the actual environment and as a result, agents learn suboptimal resource allocation policies. In contrast,
+we will facilitate the agents to learn integrated resource allocation policies by formulating the state-spaces to incorpo-
+rate the statuses of multiple components including servers, networks as well as cooling systems. The agents will learn
+tooptimisetheutilisationofresourcesandestablishtherighttrade-offamongmultipleconflictingobjectivesbylearn-
+ing through their interactions with the operating environments. We will create advanced reward structures coupled
+with comprehensive state representations for expediting the learning process of the agents. The policies thus learnt
+willsurpassthelimitationsassociatedwithhuman-designedheuristicsandmathematicaloptimisationswithhightime
+complexities.WheneverprovisionedresourcesareunabletomeetQoSrequirements,theschedulerrequestsadditional
+resources from the resource provisioner and interacts with the power state manager to configure optimal frequencies
+to execute tasks with minimal energy consumption. To this end we aim to develop QoS-aware scheduling policies to
+enhance utilisation and energy efficiency of underlying DC infrastructures by leveraging the unique characteristics of
+applicationmodels.
+5.3 Application-awaremanagementofpowerstatesofcomputingelements
+The speed and power consumption of computing elements such as CPUs, GPUs, TPUs and memory are controlled
+by regulating their clock frequencies and, accordingly, transitioning into different power states. However, their power
+management is a complex phenomenon due to nonlinear power curves of different computing elements for different
+applications.Forinstance,theexecutiontimeofcompute-intensivetasksreduceslinearly,whereaspowerconsumption
+reducesquadraticallywithreductioninCPUfrequency. 18 Hence,managingefficientpowerstatesbecomesasignificant
+challenge in such conditions. In this direction, our proposed approach is to develop mechanisms for management of
+powerstatesofcomputingelementsandscheduletasksinapower-awaremannertoreducetheenergyutilisationofDCs
+throughDVFS(dynamicvoltageandfrequencyscaling).
+A memory-intensive application would require higher memory frequency compared to CPU frequencies, and such
+heterogeneityneedstobeaccountedforinthesolution.Inourrecentwork, 19 weproposeddata-drivenMLtechniques
+foranenergy-efficientfrequencyscalingofGPUsforcommonlyusedbenchmarkingapplications.Wecreatedprediction
+modelsthatlearndifferentapplications’behaviourondifferentfrequencysettings,whichhelpstheschedulertoconfigure
+energy-efficientfrequencieswhilemeetingapplications’QoSrequirements.Buildingonourrecentwork,weproposeto
+investigatehowtodynamicallyconfigureoperatingfrequenciesandpowerstatesofdifferentelementstoexecuteavariety
+ofapplicationswithminimalenergyconsumption.
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+32 BUYYAetal.
+5.4 Energy-awaredynamicconsolidation
+ConsolidationplaysavitalroleinminimisingtheDCsenergyconsumptionasitfocusesonhowtominimisethenum-
+ber of active PMs hosting VMs so that inactive PMs can be shut down or placed into idle mode. This is an important
+requirement as servers consume a significant amount of energy even at their lower utilisation. Consolidation helps to
+utilise the active PMs efficiently by migrating VMs from underutilised PMs to suitable PMs. However, this should be
+donewithoutintroducingsignificantmigrationoverheadsandensuringservicequalityofapplications.Hence,wepro-
+posetogobeyondsimplyconsolidatingusers’applicationsbasedonwhatresourcestheycurrentlyrequiremeetingtheir
+currentQoSrequirements.Users’activitiesandperformancerequirementsbothvaryintime,inwaysthatmaytosome
+extent be predictable. We aim to answer the question:Cantheobservedhistoryoftheapplication behaviourleadtobet-
+ter workload consolidation? That is, can measurement lead to reduced physical resources required, improved application
+performance, or reduced need for migration?We propose to address this issue by developing consolidation algorithms
+thatwillusetheinformationaboutthehistoricalworkloadpatternsandapplicationbehaviourtoselectwhichapplica-
+tionswillsharephysicalresources.Thesewillminimiseoverlappingoftheapplications’resourceusage,andthustheir
+influence on each other, as well as reducing the amount of migration needed as applications’ need change. A consol-
+idation algorithm can be designed as a centralised or decentralised algorithm, depending on the infrastructure and its
+workloadrequirements.Aconsolidationalgorithmneedstohaveknowledgeofalltheresourcesandworkloadstatusin
+datacentre,insuchcase,acentralisedcontrollerisfeasiblewherewecanaggregateinformationandtaketheinformed
+decisionsaccordingly.20 However,thismaynotbefeasibleorefficientinmulti-cloudscenarios,whereDCsaregeograph-
+icallydistributedandmayincurlatencyandcommunicationoverhead.Adecentralisedconsolidationalgorithm,onthe
+other hand, allows local communication and optimization among DCs,8 which can improve resource utilization and
+performance.
+Inmulti-componentapplications,VMs’affinityneedstobemaintainedtoreducethenetworklatencybetweentheir
+components. In addition, consolidation techniques should also avoid creating hotspots as overutilisation may lead to
+increasedheatdissipation.Currently,theseissuesareaddressedindependently.Inthisregard,weaimtocreateintegrated
+consolidationpoliciesthatreduceenergyconsumptionandthenumberofmigrationswhilemeetingQoSrequirements
+ofapplications.
+5.5 Thermal-awaremanagementofworkloadsandcoolingsystems
+In DCs, IT resources such as servers dissipate an enormous amount of heat, rising CPU temperatures up to 100◦C.
+This has a significant impact on the energy consumption of cooling systems. It also creates hot spots and triggers
+CPU thermal throttling mechanisms decreasing CPU speed, causing performance degradation of applications, and
+damage to silicon components of servers affecting the reliability of the system. These problems can be overcome by
+thermal-awareworkloadmanagementsolutions,buttheyrequireaccurateservertemperatureestimationundervaried
+workload conditions and managing the server load accordingly. Existing solutions rely on analytical or computa-
+tional fluid dynamics-basedtechniquesto estimatethe ambienttemperature of servers. As theyare compute-intensive
+and/or extremely sensitive to changes in the DC layout, they are not suitable for use in RMS making online/real-time
+decisions.
+Inthiscontext,weenvisionthedeploymentofheatandhumidityIoT-sensors,andtoenablesystemloadandpower
+sensorsoneachservertomonitortheenvironmentandsystemactivities.Thisdatamaybeintegratedwithmonitoring
+systemsandanalysedtoidentifyhotspotsintheDCcausedbyunevendistributionofloadacrossservers.Weproposeto
+usethecollecteddataandbuilddata-drivenMLmodelstopredictservertemperaturesaccurately.Theruntimeinference
+ofsuchmodelswillbeaccurateandfastercomparedtotheexistingsolutions.Ourapproachinvolvesthedevelopmentof
+newthermal-managementalgorithmsthatmonitorworkloadsandestimatethethermalstateofphysicalnodesusingML
+modelsandreallocateworkloadfromtheoverheatednodestoothers.Weaimtoleveragetemperaturevariationsbetween
+differentworkloadsandswapthematanappropriatetimetocontrolthetemperature.Hardwareleveltechniques,such
+asDVFS,canlowerthetemperaturewhenitsurpassesthethermalthreshold.Theycanbeeffectivelyusedwheneverthe
+QoSofhostedapplicationsdoesnotrequireprocessorstooperateatfullcapacity.Alongwithworkloadmanagement,we
+propose algorithms and models to aid cooling-systems to configure the optimal parameters, including the selection of
+suitableairtemperaturesupply,andserverfanspeeds,forenergyefficiency.
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+BUYYAetal. 33
+5.6 Monitoring,analysisandactionsforrebalancingthesystem
+Integrated management of DCs require continuous monitoring of their resources, analysis of the monitored data, and
+takingappropriateactionsinruntimetoincreaseefficiency.Inthiscontextourobjectiveistoanswerthequestion: How
+themonitoreddataofvarioussensorscanbeusedtobetterbalancingofthedatacentrefromanenergyefficiencyperspec-
+tive? RMSs are highly dependent on infrastructure monitoring systems as they provide insights on how well resources
+are delivering promised services. Moreover, learning-based algorithms such as ML techniques depend on the quality
+and quantity of the data used to train the models. In DCs, getting access to such data are challenging due to (1) dif-
+ferent resources (server, network elements), and cooling systems collect the data using different monitoring tools and
+sensors,(2)lackofcommonsemanticsandstandardsbetweenthemand(3)theneedforcomplexandtediousmecha-
+nismstounifythesedatainameaningfulmanner.Hence,weenvisionamonitoringsystemleveragingexistingplatforms
+thatareagnostictotheunderlyingheterogeneityandcombinedifferentsubsystems’datawithcommonsemantics.This
+integrated, monitored data will be fed to different RMS modules to analyse and take actions accordingly. For example,
+in overload conditions, brownout-based algorithms will be used to deactivate the optional components of applications
+forefficiency.
+MLandRLalgorithmsfaceissuessuchaslearningfromlimiteddataandcold-startproblems.Specifically,RLalgo-
+rithms consume large amounts of time to learn efficient policies and face real-world challenges including: (1) safety
+constraints that should never or at least rarely be violated, (2) the need for reward functions that are unspecified,
+multi-objective,orrisk-sensitiveand(3)inferencesthatmusthappeninreal-timeatthecontrolfrequencyofthesystem. 21
+Toaddresstheseissues,weproposetocreatetransferlearningandasynchronousmulti-agent-basedsolutionsandharness
+themonitoreddatatotraintheRLagentsinsimulationtoimproveandperformbetterovertimebeforereal-worlddeploy-
+ment. These algorithms will determine automated actions to rebalance the system. These include VM migration, load
+balancing,andadjustingthesettingofroomcoolingsystemsandthefanspeedofserversinteractingwithRMSmodules.
+5.7 Harnessingmulti-regionedgeandCDCswithvariedenergysources
+CloudserviceprovidershavebeendeployingDCsinmultipleregionstoofferedge-orientedservicesespeciallytargeting
+IoT-basedapplicationstosupporttheirlow-latencyrequirements(seeFigure 2).TheseedgeDCsareoftenpoweredusing
+renewable energy at different times of a day depending on weather conditions. Hence, maximising renewable energy
+usage is crucial to reduce their carbon footprint.22 However, renewable energy is intermittent and uncontrollable due
+todynamicweatherconditions.ThisposesasignificantchallengetoCloudworkloadsthatruninthealways-onmode.
+Although energy storage system such as uninterrupted power supply (UPS) or dedicated battery storage systems can
+deal with intermittent availability issue at a certain level,23 however such energy storage system can be expensive and
+lead to energy leakage. Thus, it may not fully solve the intermittent availability issue of renewable energy. To address
+this issue, we propose to explore workload offloading techniques across edge-cloud DCs to increase renewable energy
+usageandmaintainedge-affinitytousersfortheirlatencysensitiveIoTworkloads.Thisreducestheuseofbrownenergy,
+facilitatesthewidespreaduseofcleanenergy,andaddressestheissueofintermittentavailability.Weaimtocreatepre-
+diction models to forecast the availability of renewable energy at different DCs, workload level in DCs, and admit the
+workloads into DCs accordingly. These policies may adopt job-delaying strategies in case of batch jobs, to the period
+whererenewableenergyusagecanbemaximised.Itisalsoessentialtoinvestigatehowthechoiceofphysicalnetwork
+infrastructure and virtual network topology affect offloading costs (delay and energy) with the increased amount of
+datatransfer.
+Edge-clouddatacentresdeployedatmultipleregionsprovideanopportunitytoreduceenergy-relatedcosts.Thelocal
+demandforelectricityvarieswithtimeandweatherconditions.Thiscausestime-varyingdifferencesinthepriceofelec-
+tricity24 ateachlocation,alongwithdifferentenvironmentalcosts(duetodifferentsourcesofenergy–coal,windand
+solar).Thisgivesscopetoadjusttheloadsenttoeachregiontoimprovecost-efficiency.Weenvisionalgorithmsforthese
+offloadingdecisionsthatconsiderthelocationoftheuser,thepowerefficiencyofresourcesateachsite,theenergymix,
+takingadvantageofrenewableenergygenerationandmanagingenergystorageaccordingtoitspricevariations, 25 andthe
+numberofserverscurrentlypowered-onineachregion.Thislastfactorisimportanttoavoidexcessswitchingofservers
+onoroffasloadsshift.WealsoproposetoinvestigatehowthisflexibilityinelectricitydemandcanallowCloudoperators
+tobecomeactiveparticipantsinthesmartpowergrid.
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+34 BUYYAetal.
+6 CASESTUDY:ENERGY-EFFICIENTCLOUDSFORBUSINESS-CRITICAL
+APPLICATIONS
+In this section, we present a use case of integrated resource management in the context of business-critical applica-
+tions to demonstrate the impact of moving towards an energy-centric approach while maintaining the required QoS.
+Business-criticalapplicationsareworkloadsthatmustnecessarilybeoperationalfortheproperfunctioningofcompanies.
+Theseapplicationsinvolvefront-endandback-endservicesandcoverdomainssuchascustomerrelationshipmanage-
+ment, email, databases, and financial modelling and simulation. If the performance of these workloads (web servers,
+mailservers,applicationservers,etc.)iscompromised,thenitcancausebusinessestolosecustomers,productivity,and
+revenue.EnsuringQoSforbusiness-criticalapplicationsisthereforeamajorchallengeinincreasingthesustainabilityof
+new-generationClouds.
+However,wearefacingascenariofullofchallengesforperformance-centricapproaches.Theresourceutilisationof
+theseapplicationsisusuallylowbutisverydynamic,withdailypeaksexceedingtheaverageCPUutilisationbyupto100
+times.26Toreducepowerconsumptioninthesehighvariabilityscenarios,typicalaggressiveVMconsolidationpoliciescan
+leadtotwoproblems.Ontheonehand,VMoversubscriptioncanleadtolossofQoS,whichisunacceptableforthistypeof
+workload.Ontheotherhand,undesirablehotspotscanbegeneratedinthedatacentre,increasingcoolingconsumption,
+and causing irreparable damage to equipment and service outages. From the above, we can note that energy-centric
+approachesthatareconsciousoftheintegratedconsumptionandtemperatureofbothITandcoolingsystemsarestrategic
+toprovidereliablebusiness-criticalapplications,whilemaximisingthesustainabilityoftheCloudsthatexecutethem.In
+thiscontext,ourcasestudyillustratessomeaspectsofourvision,astheapplication-awaremanagementofpowerstates
+ofcomputingelementsandthethermal-awaremanagementofworkloadsandcoolingsystems.
+6.1 Integratedthermal-awareresourcemanagement
+Figure 6 shows the overview of the integrated resource management system in a Cloud DC. Integrated management
+requires monitoring of both cooling and computing systems. In this scenario, we included the setpoint temperature of
+thecoolingsystemsinceitsconsumptionandthethermaldistributionofthedataroomdependonthisparameter.The
+inlettemperatureoftheserversisprovidedbyanetworkofsensors.Thistemperatureisrelevantasithasanimpacton
+thetemperaturereachedbytheinternalcomponentsoftheserverssuchasCPUs.Themonitoringsystempollsservers’
+onboardsensorsfromtherackstoobtainthenecessarydatatosensethethermalandpowerdistributionofthedataroom,
+andtotrainthemodelsthatshouldhelpuspredicttheirbehaviour.Thismonitoringsystemcanfeedbothadigitaltwin,
+to provide the current state of the DC, as well as the ML-based models. Thus, the models learn about the thermal and
+powerbehaviouroftheroomtoprovideveryaccurateestimations.
+The integrated resource management system uses the ML models to predict the impact of the energy and
+temperature-aware optimisation on the digital twin. In this way, the system knows in advance the performance of the
+VM allocation and consolidation approaches on the DVFS modes, the thermal distribution, the IT and cooling power
+consumption,andtheQoS.Oncetheoptimisationalgorithmfindsthebestconfigurationscenariointhedigitaltwin,it
+usesthissetuptocontrolthesetpointtemperatureofthecoolingsystem,andboththemappingofVMsandtheDVFS
+configurationoftheserverracks.
+6.2 Performanceevaluation
+Wepresenttheevaluationoftheintegratedresourcemanagementsystemofourenergy-centricapproachwiththeobjec-
+tiveofimprovingtheefficiencyoftheCloudDC.Toevaluatetheperformanceofourapproach,weuserealtracesfromthe
+DCsofBitbrains,acompanythatprovidesCloudcomputingITservicestocustomersinthebankingandinsurancesec-
+tor.Theworkloadinvolvesrunningbusiness-criticalapplicationsservingusersinfinancialinstitutionsandengineering
+firms.26
+The VMs run management servers for the day-to-day operation of user environments, application servers such as
+webanddatabaseservers,andcomputenodesthatperformintensivecomputingsuchassimulations.Thetracesinclude
+dynamic CPU, memory, disk and network utilisation values. Bitbrains uses a high-performance policy on the servers
+thatkeepsCPUsattheirmaximumfrequency,sotheseutilisationvaluesalwayshavethesamefrequencyreference.To
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+BUYYAetal. 35
+FIGURE 6 Overviewoftheenergy-centricintegratedresourcemanagementsystem.
+achieveacontrollableenvironment,wehavechosentheCloudSim 27 toolkittosimulateaCloudcomputingDC.Inthis
+work,wehaveextendedthesimulatortoincludethecoolinginfrastructureandboththethermalbehaviourandDVFS
+configuration of the servers. ML-based models have been used for modelling the cooling power consumption, internal
+andinlettemperatureofservers,powerconsumptionofservers,andfordynamiccontroloftheDVFSmodesofservers.
+Ourexperimentalsetupincludesatotalof1127VMs,wherewecarrytheoptimizationwithintervalof300seconds,
+thatis,resourcedemandassessmentandresourceallocation.WeusefourVMtypesfromgeneralflavours.Configurations
+of these VMs are: (a) 1 core, 4GB RAM, (b) 2 cores, 8GB RAM and (c) 4 cores, 16GB RAM. The simulation scenario
+involvesaCloudDCconsistingof1200hosts,specificallymodelledasFujitsuRX300S6serversequippedwithanIntel
+XeonE5620QuadCoreprocessorrunningatamaximumclockspeedof2.4GHz.Theseservershave16GBofRAM,1GB
+ofstoragecapacity,andruna64-bitCentOS6.4operatingsystemvirtualisedbytheQEMU-KVMhypervisor.Individual
+server operating frequencies can be set at 1.73, 1.86, 2.13, 2.26, 2.39, and 2.40GHz. Throughout the simulations, the
+activeservercountisnotablydecreasedbyenablingoversubscription.Toavoidfanfailures,theserverinlettemperature
+is limited to a maximum of 303 K. Additional information on the workload, simulation configuration and ML-based
+thermalandpowermodelscanbefoundinourpreviousresearchworks. 28,29
+Our energy and thermal-aware optimisation process is described as follows. This process supports energy efficient
+VMallocationforincomingrequestsandforreallocatingexistingVMsduetoconsolidation.First,theintegratedresource
+managementsystemdetectsoverloadedandunderloadedservers.Basedonthis,thesystemrecommendsthemigration
+ofcertainVMstoreduceperformancedegradation,hotspotemergence,andtomaximiseresourceutilisation.
+Then,thesystemusestheML-basedmodelstopredicttheimpactofallocatingeachVMoneachoftheserverswith
+availableresources,followingabestfitdecreasingapproachiteratively.Giventheoutputsofthemodels(suchasDVFS
+modes for servers, their temperature and utilization) all the proposed mappings for each VM are sorted using an opti-
+misationcriterion.Theproposedcriterionmaximisestheutilisationofserverswiththeminimumincreaseinfrequency
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+36 BUYYAetal.
+sincethereisaquadraticdependenceoftheenergyconsumptionwiththefrequency.Theresourcemanagementsystem
+updatesthedigitaltwinallocatingeachVMtothebestserveraccordingtothiscriterion.ItalsousestheML-basedmod-
+elstoupdatethethermalandpowerstatusofthedigitaltwin.TheprocessisthenrepeatedtoassignthenextVMuntil
+alltheVMshavebeenassigned.
+Attheendofthisoptimisationprocess,thesystemdelivers:(i)theproposedmappingoftheentiresetofVMsonthe
+serversintheDCracks,(ii)theoptimisedDVFSconfigurationofeachservertoensureperformanceand(iii)thesetpoint
+temperatureofthecoolingsystemtoavoidequipmentdamageconsideringthismapping.Finally,theintegratedresource
+management system provides the actions to control the actual cooling and computing infrastructures knobs including
+the optimal configuration of the frequency of each server, the air temperature supplied by the cooling system, and the
+VMallocationpolicyaccordingtotheobservedimpactonthedigitaltwin.
+Wecomparetheresultsofourworkwithtwostate-of-the-artalgorithms.Thefirstaimstominimisetheincreasein
+serverpowerconsumptionfortheallocationofeachVMwiththeobjectiveofreducingITconsumption. 20Thesecondaims
+tomaximisethispowerincrementwiththeobjectiveofincreasingserverrackutilisation. 30 Neitheroftheseapproaches
+considerstemperaturenorDVFSfordecision-makingsoafixedsetpointtemperatureof291Kischosentoensurethat
+theserversarekeptatasafetemperature.
+The results show that our energy-centric approach that is aware of the impact of room temperature and DVFS can
+reduceonaveragethetotalconsumptionoftheCloudDCby14%,presentinga58%reductionincoolingpowerconsump-
+tion.ThePUE,comparedtobaselines,isreducedfrom1.37toavalueof1.16.OurstrategymaintainstheQoSwithrespect
+tobaselines,avoidingserveroverloadandguaranteeingdynamicoperatingfrequenciesthatpreservetheperformanceof
+highvariabilitybusiness-criticalapplications.
+7 CONCLUSIONSANDFINALREMARKS
+Inourdigitalworld,Cloudshavebecomethepreferredcomputingplatformforhostingbusinessandgovernmentapplica-
+tions.CurrentCloudcomputingservices,however,offerexecutionofapplicationswithlittleemphasisonmakingClouds
+more energy-efficient and sustainable. This issue is going to be even more critical as DCs world-wide are projected to
+consume20%ofglobalelectricityby2025.Weaimatsolvingthiscriticalproblembyachievingaquantumleapinenergy
+efficiency and sustainability for next generation Cloud computing, dealing with energy efficiency through integrated
+managementofallresourcesandQoSrequirementsofapplications.
+Thisarticlepresentsourvisiontowards energy-efficientnewgenerationCloudcomputing.NextgenerationClouds
+shouldbeabletoreducetheirenergyconsumptionandcarbonfootprint,bycreatingnewlearning-centricalgorithmsand
+softwaresystemsforintegratedmanagementofalltheirrelatedresourcesandapplications.Ourearlyexperimentsshow
+thepotentialofourenergy-centricapproach,incorporatingtheDVFSconfiguration,thethermalbehaviourofthedata
+room,andtheirimpactontheenergyconsumption,tooptimisetheintegratedmanagementofcomputingandcooling
+systems.
+Throughclosesynthesisoftheoryandpractice,theproposedapproachwilldelivertimelyinnovationsinfundamen-
+tal science and translational outcomes with significant economic, environmental and societal benefits. This ambitious
+research will address a critical energy challenge facing Cloud computing through systematic alignment of energy effi-
+ciencyandsustainability.Torealiseourproposedvision,wediscussedvariousresearchissues(earlierinSections 4and
+5)andapproachesforaddressingasfuturedirections,whichcanbesummarisedasthefollowingguidelines:
+1. Createanovelarchitecturalframeworkandprinciplesforenergy-efficientandsustainableCloudcomputing.
+2. Invent new algorithms for integrated management of all data centre infrastructure resources to minimise energy
+consumptionofbothITresourcessuchasserversandnon-ITresourcessuchascoolingsystems.
+3. Invent learning-centric dynamic resource provisioning and scheduling algorithms for execution of applications in
+Cloudenvironmentsinanenergy-efficientmannerwhilemeetingusers’QoSrequirements.
+4. Proactively balance the state of the Cloud data centre environment for energy-efficient operation by inventing new
+algorithmsandbuildingMLmodelsusingmonitoreddatacollectedfromthesystem.
+5. Designinnovativemechanismsandpoliciesforthermalandhotspotsmanagementforsystemresiliency.
+6. MinimisethecarbonfootprintofCloudserviceswiththeinventionofnewalgorithmsfordistributionofworkloads
+acrossgeographicallydistributed,green-energypowerededgeandClouddatacentreinfrastructures.
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+BUYYAetal. 37
+7. Develop software systems incorporating energy-efficient resource management algorithms and application demon-
+stratorsfordeploymentinoperationaledgeandCDCs.
+Theapproachesproposedinthisarticlewillprovidethevitalquantumresearchleapandscientificfoundationnec-
+essary for energy efficiency in next generation Cloud computing. This research will create a paradigm shift by: (1)
+transforming the resource management approaches from ‘performance-centric’ to ‘energy-centric’, ‘discrete’ to ‘inte-
+grated’ and ‘control-centric’ to ‘learning-centric’; and (2) managing two different competing requirements, users QoS
+expectationsandserviceproviders’energyefficiencygoals,tosolvetheglobal‘energy’challenge.
+ACKNOWLEDGMENT
+We thank our colleagues Renata Borovica-Gajic, Maria Rodriguez Read, Rami Bahsoon, Satish Srirama, Amanda
+Jayanetti, Muhammed Tawfiqul, John Grundy, Vlado Stankovski, Rajeev Muralidhar, Adel Nadjaran Toosi, Rodrigo N.
+Calheiros,YogeshSharma,RaoKotagiri,SanMurugesan,JillStjohnandSamodhaPallewattafortheircontributionson
+improvingthearticle.
+ThisworkispartiallysupportedbytheUniversityofMelbourneandtheHiPEAC6Network,supportedbytheEuro-
+peanUnion’sHorizon2020researchandinnovationprogramme.OpenaccesspublishingfacilitatedbyTheUniversity
+of Melbourne, as part of the Wiley - The University of Melbourne agreement via the Council of Australian University
+Librarians.
+DATAAVAILABILITYSTATEMENT
+Datasharingisnotapplicabletothisarticleasnonewdatawerecreatedoranalyzedinthisstudy.
+ORCID
+RajkumarBuyya https://orcid.org/0000-0001-9754-6496
+REFERENCES
+1. Gubbi J, Buyya R, Marusic S. et al. Internet of Things (IoT): A Vision, Architectural Elements and Future Directions.FGCS.
+2013;29(7):1645-1660.
+2. KaplanJ,ForrestW,KindlerN.Revolutionizingdatacentreenergyefficiency.McKinsey,July2008.
+3. MayburyS.Howmuchenergydoesyourdatacentreuse?May15,2017. https://www.metronode.com.au/energy_usage/
+4. LimaJ.Datacentresoftheworldwillconsume1/5ofEarth’spowerby2025.DataEconomy.Com,London,December12,2017.
+5. AndraeA,EdlerT.Onglobalelectricityusageofcommunicationtechnology:trendsto2030. Challenges.2015;6(1):117-157.
+6. ShehabiA,SmithS,MasanetE,KoomeyJ.DatacentergrowthintheUnitedStates:decouplingthedemandforservicesfromelectricity
+use.EnvironResLett .2018;13(12):1-11.
+7. GuitartJ. TowardSustainableDataCentersComputing .Springer;2016.
+8. HuB,CaoZ,ZhouM.Schedulingreal-timeparallelapplicationsincloudtominimizeenergyconsumption. InIEEETransCloudComput .
+2022;10(1):662-674.
+9. GillS,BuyyaR.ATaxonomyandFutureDirectionsforSustainableCloudComputing. ACMComputSurv .2019;51(5):1-33.
+10. BuyyaR,SriramaS,CasaleG.etal.AManifestoforFutureGenerationCloudComputing. ACMComputSurv .2019;51(5):1-38.
+11. BeloglazovA,BuyyaR.Managingoverloadedhostsfordynamicconsolidationofvirtualmachinesinclouddatacentersunderqualityof
+serviceconstraints. IEEETransParallelDistribSyst .2013;24(7):1366-1379.
+12. PedramM.Energy-efficientdatacenters. IEEETransComput-AidedDesignICsSyst .2012;31(10):1465-1484.
+13. Doidge F. A waste of energy: Dealing with idle servers in the Datacentre, March 2022.https://www.computerweekly.com/feature/A-
+waste-of-energy-Dealing-with-idle-servers-in-the-datacentre
+14. GuptaA,FaraboschiP,GioachinF.etal.EvaluatingandimprovingperformanceandschedulingofHPCapplicationsinCloud. IEEETCC.
+2016;4(3):307-321.
+15. StavrinidesG,KaratzaH.Anenergy-efficient,QoS-awareandcost-effectiveschedulingapproachforrealtimeworkflowapplicationsin
+CloudcomputingsystemsutilizingDVFSandapproximatecomputations. FGCS.2019;96:216-226.
+16. YuanH,BiJ,ZhangJ,ZhouM.Energyconsumptionandperformanceoptimizedtaskschedulingindistributeddatacenters. IEEETrans
+Syst,Man,Cybernet:Syst .2022;52(9):5506-5517.
+17. Wang Y, Liu H, Zheng W. et al. Multi-objective workflow scheduling with deep-Q-network-based multi-agent reinforcement learning.
+IEEEAccess.2019;39974-39982.
+18. CalheirosR,BuyyaR.Energy-efficientschedulingofurgentbag-of-tasksapplicationsincloudsthroughDVFS.IEEECloudCom.2014.
+19. IlagerS,MralidharR,RamamohanaraoK,BuyyaR.Adatadrivenfrequencyscalingapproachfordeadline-awareenergyefficientschedul-
+ing on graphics processing units (GPUs).Proceedings of the 20th IEEE/ACM International Symposium on Cluster, Cloud, and Internet
+Computing(CCGrid2020) .2020;579-588.
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+
+38 BUYYAetal.
+20. BeloglazovA,BuyyaR.Optimalonlinedeterministicalgorithmsandadaptiveheuristicsforenergyandperformanceefficientdynamic
+consolidationofvirtualmachinesinClouddatacenters. ConcurrComputPractExp .2012;24(13):1397-1420.
+21. Dulac-ArnoldG,LevineN,MankowitzDJ.etal.Anempiricalinvestigationofthechallengesofrealworldreinforcementlearning.CoRR
+abs/2003.11881,2020.
+22. KhosraviA,AndrewL,BuyyaR.DynamicVMPlacementMethodforMinimizingEnergyandCarbonCostinGeographicallyDistributed
+CloudDataCenters. IEEETransSustainComput .2017;2(2):183-196.
+23. PantazoglouM,TzortzakisG,DelisA.Decentralizedandenergy-efficientworkloadmanagementinenterpriseclouds. IEEETransCloud
+Comput.2016;4(2):196-209.doi: 10.1109/TCC.2015.2464817
+24. YuanH,BiJ,ZhouM.Energy-efficientandQoS-optimizedadaptivetaskschedulingandmanagementinclouds. IEEETransAutomSci
+Eng.2022;19(2):1233-1244.
+25. IslamM,RenX,RenS.etal.Aspotcapacitymarkettoincreasepowerinfrastructureutilizationinmulti-tenantdatacenters. Proceedings
+ofthe2018IEEEInternationalSymposiumonHighPerformanceComputerArchitecture(HPCA) .2018;776-788.
+26. ShenS,vanBeekSV,IosupA.Statisticalcharacterizationofbusiness-criticalworkloadshostedinclouddatacenters.Proceedingsofthe
+15thIEEE/ACMInternationalSymposiumonCluster,CloudandGridComputing,Shenzhen,China,2015.
+27. Calheiros R, Ranjan R, Beloglazov A, De Rose C, Buyya R. Cloudsim: a toolkit for modeling and simulation of cloud computing
+environmentsandevaluationofresourceprovisioningalgorithms. Softw:PractExp .2011;41(1):23-50.
+28. ArrobaP,MoyaM,AyalaJ,BuyyaR.Dynamicvoltageandfrequencyscaling-awaredynamicconsolidationofvirtualmachinesforenergy
+efficientclouddatacenters. ConcurrComput:PractExp .2017;29:e4067.
+29. ArrobaP,Risco-MartínJ,MoyaJ,AyalaJ.Heuristicsandmetaheuristicsfordynamicmanagementofcomputingandcoolingenergyin
+clouddatacenters. Softw:PractExp .2018;48:1775-1804.
+30. Chowdhury M, Mahmud M, Rahman R. Implementation and performance analysis of various VM placement strategies in CloudSim.
+JCloudComput .2015;4(1):20.
+Howtocitethisarticle: BuyyaR,IlagerS,ArrobaP.Energy-efficiencyandsustainabilityinnewgeneration
+cloudcomputing:Avisionanddirectionsforintegratedmanagementofdatacentreresourcesandworkloads.
+Softw:PractExper .2024;54(1):24-38.doi:10.1002/spe.3248
+ 1097024x, 2024, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/spe.3248 by National Health And Medical Research Council, Wiley Online Library on [14/12/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
